@@ -10,20 +10,20 @@ int main() {
 
         cout << "Enter the elements of the array: "<<  "\n" ;
 
-        for (int i = 0; i < n; i++) {
+        for (int  i = 0; i < n; i++) {
             cin >> arr[i];
         }
 
         cout << "\n Array " << "\n" ;
 
-        for (int i = 0; i < n; i++)
+        for (int  i = 0; i < n; i++)
         {
             cout << arr[i] << " " ;
         }
 
         cout << "\n Maximum element is: " ;
         int max = arr[0] ;
-        for (int i = 1; i < n; i++)
+        for (int  i = 1; i < n; i++)
         {
             if (arr[i] > max)
             {
@@ -35,7 +35,7 @@ int main() {
 
         cout << "\n Minimum element is: " ;
         int min = arr[0] ;
-        for (int i = 1; i < n; i++)
+        for (int  i = 1; i < n; i++)
         {
             if (arr[i] < min)
             {
