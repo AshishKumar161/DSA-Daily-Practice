@@ -85,6 +85,8 @@ int evaluatePostfix(string exp)
 
 int main()
 {
+    system("cls");
+
     string exp ;
 
     cout << "Enter postfix expression: " ;
@@ -92,5 +94,7 @@ int main()
 
     cout << "Result: " << evaluatePostfix(exp) ;
 
+    system("pause");
+    system("cls");
     return 0;
 }
