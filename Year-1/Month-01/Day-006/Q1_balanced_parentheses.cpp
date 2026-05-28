@@ -85,6 +85,8 @@ bool isBalanced(string s)
 
 int main()
 {
+    system("cls");
+
     string brackets;
 
     cout << "Enter brackets: " ;
@@ -99,5 +101,7 @@ int main()
         cout << "Not Balanced Parentheses" ;
     }
 
+    system("pause");
+    system("cls");
     return 0;
 }
