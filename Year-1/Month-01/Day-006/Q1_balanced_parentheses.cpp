@@ -20,6 +20,7 @@ public:
         {
             cout << "Stack Overflow" ;
         }
+        
         else
         {
             top++ ; 
@@ -33,6 +34,7 @@ public:
         {
             return '\0' ;
         }
+
         else
         {
             char ch = arr[top] ;
@@ -59,6 +61,7 @@ bool isBalanced(string s)
         {
             st.push(ch) ;
         }
+
         else if (ch == ')' || ch == '}' || ch == ']')
         {
             if (st.isEmpty())
