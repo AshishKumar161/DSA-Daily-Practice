@@ -113,6 +113,9 @@ public:
 };
 
 int main() {
+    
+    system("cls");
+
     CircularQueue q;
 
     q.enqueue(10) ;
@@ -133,5 +136,7 @@ int main() {
 
     q.display() ;
 
+    system("pause");
+    system("cls");
     return 0;
 }

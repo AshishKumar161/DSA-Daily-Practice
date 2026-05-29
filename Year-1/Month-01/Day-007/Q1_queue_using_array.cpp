@@ -62,7 +62,6 @@ public:
 };
 
 int main() {
-    
     system("cls");
 
     Queue q ;
