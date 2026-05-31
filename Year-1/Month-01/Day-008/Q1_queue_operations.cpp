@@ -73,6 +73,9 @@ public:
 };
 
 int main() {
+    
+    system("cls");
+
     Queue q;
 
     q.enqueue(10);
@@ -99,5 +102,7 @@ int main() {
     else
         cout << "No" << endl;
 
+    system("pause");
+    system("cls");
     return 0;
 }
