@@ -122,6 +122,8 @@ public:
 };
 
 int main() {
+    system("cls");
+
     Deque dq;
 
     dq.insertRear(10);
@@ -137,5 +139,7 @@ int main() {
     dq.deleteRear();
     dq.display();
 
+    system("pause");
+    system("cls");
     return 0;
 }
