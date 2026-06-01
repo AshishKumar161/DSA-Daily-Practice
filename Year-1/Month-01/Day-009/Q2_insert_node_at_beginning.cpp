@@ -31,6 +31,8 @@ void display(Node* head) {
 }
 
 int main() {
+    system("cls");
+
     Node* head = new Node(20);
     Node* second = new Node(30);
 
@@ -44,5 +46,7 @@ int main() {
     cout << "\nAfter inserting 10 at beginning:" << endl;
     display(head);
 
+    system("pause");
+    system("cls");
     return 0;
 }
