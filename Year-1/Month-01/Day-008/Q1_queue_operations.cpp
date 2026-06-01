@@ -3,104 +3,130 @@ using namespace std;
 
 #define SIZE 5
 
-class Queue {
-    int arr[SIZE];
-    int front, rear;
+class Queue 
+{
+    int arr[SIZE] ;
+    int front, rear ;
 
 public:
-    Queue() {
-        front = -1;
-        rear = -1;
+    Queue() 
+    {
+        front = -1 ;
+        rear = -1 ;
     }
 
-    bool isEmpty() {
-        return front == -1 || front > rear;
+    bool isEmpty() 
+    {
+        return front == -1 || front > rear ;
     }
 
-    bool isFull() {
-        return rear == SIZE - 1;
+    bool isFull()  
+    {
+        return rear == SIZE - 1 ;
     }
 
-    void enqueue(int value) {
-        if (isFull()) {
-            cout << "Queue is Full!" << endl;
-            return;
+    void enqueue(int value) 
+    {
+        if (isFull()) 
+        {
+            cout << "Queue is Full!" << "\n" ;
+            return ;
         }
 
-        if (front == -1) {
-            front = 0;
+        if (front == -1) 
+        {
+            front = 0 ;
         }
 
-        rear++;
-        arr[rear] = value;
-        cout << value << " inserted into queue." << endl;
+        rear++ ;
+        arr[rear] = value ;
+        cout << value << " inserted into queue." << "\n" ;
     }
 
-    void dequeue() {
-        if (isEmpty()) {
-            cout << "Queue is Empty!" << endl;
-            return;
+    void dequeue() 
+    {
+        if (isEmpty()) 
+        {
+            cout << "Queue is Empty!" << "\n" ;
+            return ; 
         }
 
-        cout << arr[front] << " deleted from queue." << endl;
-        front++;
+        cout << arr[front] << " deleted from queue." << "\n" ;
+        front++ ;
 
-        if (front > rear) {
-            front = rear = -1;
-        }
-    }
-
-    void peek() {
-        if (isEmpty()) {
-            cout << "Queue is Empty!" << endl;
-        } else {
-            cout << "Front element is: " << arr[front] << endl;
+        if (front > rear)
+         {
+            front = rear = -1 ;
         }
     }
 
-    void display() {
-        if (isEmpty()) {
-            cout << "Queue is Empty!" << endl;
-            return;
+    void peek() 
+    {
+        if (isEmpty()) 
+        {
+            cout << "Queue is Empty!" << "\n" ;
+        }
+        else 
+        {
+            cout << "Front element is: " << arr[front] << "\n" ;
+        }
+    }
+
+    void display() 
+    {
+
+        if (isEmpty()) 
+        {
+            cout << "Queue is Empty!" << "\n" ;
+            return ;
         }
 
-        cout << "Queue elements: ";
-        for (int i = front; i <= rear; i++) {
-            cout << arr[i] << " ";
+        cout << "Queue elements: " ;
+        for (int  i = front; i <= rear; i++) 
+        {
+            cout << arr[i] << " " ;
         }
-        cout << endl;
+        cout << "\n" ;
     }
-};
+} ;
 
 int main() {
     
     system("cls");
 
-    Queue q;
+    Queue q ;
 
-    q.enqueue(10);
-    q.enqueue(20);
-    q.enqueue(30);
+    q.enqueue(10) ;
+    q.enqueue(20) ;
+    q.enqueue(30) ;
 
-    q.display();
+    q.display() ;
 
-    q.peek();
+    q.peek() ;
 
-    q.dequeue();
+    q.dequeue() ;
 
-    q.display();
+    q.display() ;
 
-    cout << "Is Queue Empty? ";
+    cout << "Is Queue Empty? " ;
     if (q.isEmpty())
-        cout << "Yes" << endl;
+    {
+        cout << "Yes" << "\n" ;
+    }
     else
-        cout << "No" << endl;
+    {
+        cout << "No" << "\n" ;
+    }
 
-    cout << "Is Queue Full? ";
+    cout << "Is Queue Full? " ;
     if (q.isFull())
-        cout << "Yes" << endl;
+    {
+        cout << "Yes" << "\n" ;
+    }
     else
-        cout << "No" << endl;
+    {
+        cout << "No" << "\n" ;
+    }
 
     system("pause");
     system("cls");
