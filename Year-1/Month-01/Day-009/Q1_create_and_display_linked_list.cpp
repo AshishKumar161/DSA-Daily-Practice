@@ -24,6 +24,8 @@ void display(Node* head) {
 }
 
 int main() {
+    system("cls");
+
     Node* head = new Node(10);
     Node* second = new Node(20);
     Node* third = new Node(30);
@@ -34,5 +36,7 @@ int main() {
     cout << "Linked List:" << endl;
     display(head);
 
+    system("pause");
+    system("cls");
     return 0;
 }
