@@ -1,40 +1,44 @@
 #include <iostream>
 using namespace std;
 
-class Node {
+class Node 
+{
 public:
-    int data;
-    Node* next;
+    int data ;
+    Node* next ;
 
-    Node(int value) {
-        data = value;
-        next = NULL;
+    Node(int value) 
+    {
+        data = value ;
+        next = NULL ;
     }
 };
 
-void display(Node* head) {
-    Node* temp = head;
+void display(Node* head) 
+{
+    Node* temp = head ;
 
-    while (temp != NULL) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
+    while (temp != NULL)
+    {
+        cout << temp->data << " -> " ;
+        temp = temp->next ;
     }
 
-    cout << "NULL" << endl;
+    cout << "NULL" << "\n" ;
 }
 
 int main() {
     system("cls");
 
-    Node* head = new Node(10);
-    Node* second = new Node(20);
-    Node* third = new Node(30);
+    Node* head = new Node(10) ;
+    Node* second = new Node(20) ;
+    Node* third = new Node(30) ;
 
-    head->next = second;
-    second->next = third;
+    head->next = second ;
+    second->next = third ;
 
-    cout << "Linked List:" << endl;
-    display(head);
+    cout << "Linked List:" << "\n" ;
+    display(head) ;
 
     system("pause");
     system("cls");
