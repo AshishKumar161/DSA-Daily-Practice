@@ -56,6 +56,8 @@ void display(Node* head) {
 }
 
 int main() {
+    system("cls");
+
     Node* head = NULL;
 
     // Creating original list: 10 -> 20 -> 40
@@ -72,5 +74,7 @@ int main() {
     cout << "After insertion:" << endl;
     display(head);
 
+    system("pause");
+    system("cls");
     return 0;
 }
