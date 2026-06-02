@@ -43,6 +43,8 @@ void display(Node* head) {
 }
 
 int main() {
+    system("cls");
+
     Node* head = NULL;
 
     insertEnd(head, 10);
@@ -56,5 +58,7 @@ int main() {
     cout << "After inserting 30 at end:" << endl;
     display(head);
 
+    system("pause");
+    system("cls");
     return 0;
 }
