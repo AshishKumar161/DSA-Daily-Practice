@@ -35,6 +35,8 @@ void deleteFirst(Node*& head) {
 }
 
 int main() {
+    system("cls");
+
     Node* head = new Node(10);
     head->next = new Node(20);
     head->next->next = new Node(30);
@@ -47,5 +49,7 @@ int main() {
     cout << "After deletion:" << endl;
     display(head);
 
+    system("pause");
+    system("cls");
     return 0;
 }
