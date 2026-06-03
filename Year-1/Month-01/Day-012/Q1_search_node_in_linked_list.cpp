@@ -95,5 +95,7 @@ int main()
     cout << "Search: " << key << endl;
     ll.search(key);
 
+    system("pause");
+    system("cls");
     return 0;
 }
