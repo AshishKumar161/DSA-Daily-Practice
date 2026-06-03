@@ -126,6 +126,7 @@ int main()
     cout << "After deletion:" << endl;
     ll.print();
 
-   
+    system("pause");
+    system("cls");
     return 0;
 }
