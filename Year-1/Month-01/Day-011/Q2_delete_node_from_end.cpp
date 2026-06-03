@@ -60,6 +60,7 @@ int main() {
     cout << "After deletion:" << endl;
     display(head);
 
-    
+    system("pause");
+    system("cls");
     return 0;
 }
