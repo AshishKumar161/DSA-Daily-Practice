@@ -1,55 +1,67 @@
 #include <iostream>
 using namespace std;
 
-class Node 
+class Node
 {
-public:
+ public:
     int data ;
     Node* next ;
 
-    Node(int value) 
+    Node(int data)
     {
-        data = value ;
-        next = NULL ;
+        this->data = data ;
+        this->next = NULL ;
     }
 };
 
-void push_Front(Node*& head, int value) 
+class list
 {
-    Node* newNode = new Node(value) ;
+    public:
+    Node* head;
 
-    newNode->next = head ;
-    head = newNode ;
-}
-
-void display(Node* head) 
-{
-    Node* temp = head ;
-
-    while (temp != NULL) 
+    list()
     {
-        cout << temp->data << " -> " ;
-        temp = temp->next ;
+        head = NULL ;
     }
 
-    cout << "NULL" << "\n" ;
-}
+    void push_front(int val)
+    {
+        Node* newNode = new Node(val) ;
+        if (head == NULL)
+        {
+            head = newNode ;
+            return ;
+        }
+        else
+        {
+            newNode->next = head ;
+            head = newNode ;
+        }
+    }
 
-int main() {
+    void print()
+    {
+        Node* temp ;
+        temp = head ;
+        while (temp != NULL)
+        {
+            cout << temp->data << " -> " ;
+            temp = temp->next ;
+        }
+        cout << "NULL" << "\n" ;
+    }
+};
+
+int main()
+{
     system("cls");
 
-    Node* head = new Node(20) ;
-    Node* second = new Node(30) ;
+    list ll ; 
+    ll.push_front(1) ;
+    ll.push_front(2) ;
+    ll.push_front(3) ;
 
-    head->next = second ;
-
-    cout << "Original List:" << "\n" ;
-    display(head) ;
-
-    push_Front(head, 10) ;
-
-    cout << "\nAfter inserting 10 at beginning:" << "\n" ;
-    display(head) ;
+    ll.print() ;
 
     system("pause");
     system("cls");
