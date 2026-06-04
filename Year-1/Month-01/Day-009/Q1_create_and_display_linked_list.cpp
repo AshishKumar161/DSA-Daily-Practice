@@ -1,118 +1,68 @@
-// #include <iostream>
-// using namespace std;
-
-// class Node
-// {
-// public:
-//     int data ;
-//     Node* next ;
-
-//     Node(int value)
-//     {
-//         data = value ;
-//         next = NULL ;
-//     }
-// };
-
-// void display(Node* head)
-// {
-//     Node* temp = head ;
-
-//     while (temp != NULL)
-//     {
-//         cout << temp->data << " -> " ;
-//         temp = temp->next ;
-//     }
-
-//     cout << "NULL" << "\n" ;
-// }
-
-// int main() {
-//     system("cls");
-
-//     Node* head = new Node(10) ;
-//     Node* second = new Node(20) ;
-//     Node* third = new Node(30) ;
-
-//     head->next = second ;
-//     second->next = third ;
-
-//     cout << "Linked List:" << "\n" ;
-//     display(head) ;
-
-//     system("pause");
-//     system("cls");
-//     return 0;
-// }
-
 #include <iostream>
 using namespace std;
-class Node
+
+class Node 
 {
-public:
-    int data;
-    Node *next;
+    public:
+    int data ;
+    Node* next ;
 
     Node(int data)
     {
-        this->data = data;
-        this->next = NULL;
+        this -> data = data ;
+        this -> next = NULL ;
     }
 };
 
-class list
+class list 
 {
-public:
-    Node *head;
+    public:
+    Node* head ;
 
     list()
     {
-        head = NULL;
+        head = NULL ;
     }
 
     void push(int val)
     {
-        Node *newNode = new Node(val);
-
+        Node* newNode = new Node(val) ;
         if (head == NULL)
         {
-            head = newNode;
-            return;
+            head = newNode ;
+            return ;
         }
         else
         {
-            newNode->next = head;
-            head = newNode;
-        }
+            newNode -> next = head ;
+            head = newNode ;
+        }    
     }
 
     void print()
     {
-        Node *temp;
-        temp = head;
-
+        Node* temp ;
+        temp = head ;
         while (temp != NULL)
         {
-            cout << temp->data << "->";
-            temp = temp->next;
+            cout << temp -> data << " -> " ;
+            temp = temp -> next ;
         }
-        cout << "NULL";
+        cout << "NULL" << "\n" ;
     }
 };
 
-int main()
-{
-    system("cls");
+int main() {
+     system("cls");
 
-    list ll;
-    ll.push(55);
-    ll.push(25);
-    ll.push(555);
+     list ll ;
+     ll.push(1) ;
+     ll.push(2) ;
+     ll.push(3) ;
 
-    ll.print();
-
-    system("pause");
-    system("cls");
-    return 0;
+     ll.print() ;
+      
+     system("pause");
+     system("cls");
+     return 0;
 }
-
