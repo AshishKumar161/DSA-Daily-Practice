@@ -1,80 +1,130 @@
 #include <iostream>
 using namespace std;
 
-class Node {
-public:
-    int data;
-    Node* next;
-
-    Node(int value) {
-        data = value;
-        next = NULL;
+class Node
+{
+    public:
+    int data ;
+    Node* next ;
+    
+    Node(int data)
+    {
+        this -> data = data ;
+        this -> next = NULL ;
     }
 };
 
-void insertAtPosition(Node*& head, int value, int position) {
-    Node* newNode = new Node(value);
+class list
+{
+    public:
+    Node* head ;
+    Node* tail ;
 
-    // Insert at beginning
-    if (position == 1) {
-        newNode->next = head;
-        head = newNode;
-        return;
+    list()
+    {
+        head = tail = NULL ;
     }
 
-    Node* temp = head;
-
-    // Move to node before the given position
-    for (int i = 1; i < position - 1; i++) {
-        if (temp == NULL) {
-            cout << "Invalid position" << endl;
-            delete newNode;
-            return;
+    void push_front(int val)
+    {
+        Node* newNode = new Node(val) ;
+        
+        if (head == NULL)
+        {
+            head = tail = newNode ;
+            return ;
         }
-        temp = temp->next;
+
+        else
+        {
+            newNode -> next = head ;
+            head = newNode ;
+        }
     }
 
-    if (temp == NULL) {
-        cout << "Invalid position" << endl;
-        delete newNode;
-        return;
+    void insert_Node(int val , int pos)
+    {
+        Node* newNode = new Node(val) ;
+
+        if (pos <= 0)
+        {
+            cout << "Invalid position" << "\n" ;
+            return ;
+        }
+        
+        if (pos == 1)
+        {
+            push_front(val) ;
+            return ;
+        }
+        else
+        {
+            Node* temp ;
+            temp = head ;
+
+            for (int  i = 1; i < pos - 1; i++)
+            {
+                if (temp == NULL)
+                {
+                    cout << "Invalid Position" << "\n" ;
+                    delete newNode ;
+                    return ;
+                }
+                temp = temp -> next ;
+            }
+
+            if (temp == NULL)
+            {
+                cout << "Invalid Position" << "\n";
+                delete newNode;
+                return;
+            }
+
+            newNode -> next = temp -> next ;
+            temp -> next = newNode ;
+            
+            if (newNode -> next == NULL)
+            {
+                tail = newNode ;
+            }
+            
+        }
+        
     }
 
-    newNode->next = temp->next;
-    temp->next = newNode;
-}
+    void display()
+    {
+        Node* temp ;
+        temp  = head  ;
 
-void display(Node* head) {
-    Node* temp = head;
-
-    while (temp != NULL) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
+        while (temp != NULL)
+        {
+            cout << temp -> data << " ->" ;
+            temp = temp -> next ;
+        }
+        cout << "NULL" << "\n" ;
+        
     }
 
-    cout << "NULL" << endl;
-}
+};
 
 int main() {
-    system("cls");
+     system("cls");
+     
+     list ll ;
+     ll.push_front(1) ;
+     ll.push_front(2) ;
+     ll.push_front(3) ;
 
-    Node* head = NULL;
+     cout << "Linked List: " << "\n" ;
+     ll.display() ;
 
-    // Creating original list: 10 -> 20 -> 40
-    insertAtPosition(head, 10, 1);
-    insertAtPosition(head, 20, 2);
-    insertAtPosition(head, 40, 3);
+     ll.insert_Node(4 , 2) ;
 
-    cout << "Original List:" << endl;
-    display(head);
-
-    // Insert 30 at position 3
-    insertAtPosition(head, 30, 3);
-
-    cout << "After insertion:" << endl;
-    display(head);
-
-    system("pause");
-    system("cls");
-    return 0;
+     cout << "Linked List after insert: " << "\n" ;
+     ll.display() ;
+      
+     system("pause");
+     system("cls");
+     return 0;
 }
