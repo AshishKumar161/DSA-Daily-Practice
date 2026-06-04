@@ -39,7 +39,7 @@ class list
         }
     }
 
-    void print()
+    void display()
     {
         Node* temp ;
         temp = head ;
@@ -61,7 +61,7 @@ int main()
     ll.push_front(2) ;
     ll.push_front(3) ;
 
-    ll.print() ;
+    ll.display() ;
 
     system("pause");
     system("cls");

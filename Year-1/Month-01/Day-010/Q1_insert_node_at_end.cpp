@@ -1,64 +1,91 @@
 #include <iostream>
 using namespace std;
 
-class Node {
-public:
-    int data;
-    Node* next;
+class Node 
+{
+    public:
+    int data ;
+    Node* next ;
 
-    Node(int value) {
-        data = value;
-        next = NULL;
+    Node(int data)
+    {
+        this -> data = data ;
+        this -> next = NULL ;
     }
 };
 
-void insertEnd(Node*& head, int value) {
-    Node* newNode = new Node(value);
+class list 
+{
+    public:
+    Node* head ;
+    Node* tail ;
 
-    // If list is empty
-    if (head == NULL) {
-        head = newNode;
-        return;
+    list()
+    {
+        head = tail = NULL ;
     }
 
-    Node* temp = head;
-
-    // Move to last node
-    while (temp->next != NULL) {
-        temp = temp->next;
+    void push_front(int val)
+    {
+        Node* newNode = new Node(val) ;
+        if (head == NULL)
+        {
+            head = tail = newNode ;
+            return ;
+        }
+        else
+        {
+            newNode->next = head ;
+            head = newNode ;
+        }
     }
 
-    temp->next = newNode;
-}
+    void push_back(int val)
+    {
+        Node* newNode = new Node(val) ;
 
-void display(Node* head) {
-    Node* temp = head;
-
-    while (temp != NULL) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
+        if (head == NULL)
+        {
+            head = tail = newNode ;
+            return ;
+        }
+        else 
+        {
+            tail -> next = newNode ;
+            tail = newNode ;
+        }
     }
 
-    cout << "NULL" << endl;
-}
+    void display()
+    {
+        Node* temp ;
+        temp = head ;
+        while (temp != NULL)
+        {
+            cout << temp->data << " -> " ;
+            temp = temp->next ;
+        }
+        cout << "NULL" << "\n" ;
+    }
+};
 
 int main() {
-    system("cls");
+     system("cls");
+     
+     list ll ;
+     ll.push_front(1) ;
+     ll.push_front(2) ;
+     ll.push_front(3) ;
 
-    Node* head = NULL;
+     cout << "Linked list:"  << "\n" ;
+     ll.display() ;
+      
+     ll.push_back(4) ;
 
-    insertEnd(head, 10);
-    insertEnd(head, 20);
+     cout << "After push_back:" <<  "\n" ;
+     ll.display() ;
 
-    cout << "Original List:" << endl;
-    display(head);
-
-    insertEnd(head, 30);
-
-    cout << "After inserting 30 at end:" << endl;
-    display(head);
-
-    system("pause");
-    system("cls");
-    return 0;
+     system("pause");
+     system("cls");
+     return 0;
 }
