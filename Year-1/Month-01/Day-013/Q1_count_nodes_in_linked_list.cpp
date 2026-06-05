@@ -74,6 +74,8 @@ public:
 
 int main()
 {
+    system("cls");
+
     List l;
 
     l.push_back(10);
@@ -86,5 +88,7 @@ int main()
 
     cout << "Total nodes = " << l.countNodes() << endl;
 
+    system("pause");
+    system("cls");
     return 0;
 }
