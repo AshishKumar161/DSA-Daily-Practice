@@ -3,130 +3,170 @@ using namespace std;
 
 class Node
 {
-public:
-    int data;
-    Node *next;
+    public:
+    int data ;
+    Node* next ;
 
-    Node(int data)
+    Node (int data)
     {
-        this->data = data;
-        this->next = NULL;
+        this -> data = data ;
+        this -> next = NULL ;
     }
+
 };
 
-class list
+class list 
 {
-public:
-    Node *head;
+    public:
+    Node* head ;
+    Node* tail ;
 
     list()
     {
-        head = NULL;
+        head = tail = NULL ;
     }
 
-    void push(int val)
+    void push_front(int val)
     {
-        Node *newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
-
-        Node *temp = head;
-
-        while (temp->next != NULL)
+        
+        else
         {
-            temp = temp->next;
+            newNode -> next = head ;
+            head = newNode ;
+        }
+    }
+    
+    void pop_front()
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty" << "\n" ;
+            return ;
+        }
+        Node* temp ;
+        temp = head ;
+        head = head->next ;
+        delete temp ;
+    }
+    
+    void pop_back()
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty" << "\n" ;
+            return ;
         }
 
-        temp->next = newNode;
+        if (head == tail)
+        {
+            delete head ;
+            head = tail = NULL ;
+            return ;
+        }
+
+        Node* temp ;
+        temp = head ;
+        while (temp ->next  != tail )
+        {
+            temp = temp -> next ;
+        }
+        delete tail ;
+        tail = temp ;
+        temp -> next = NULL ;
     }
 
-    void print()
+    void display()
     {
-        Node *temp = head;
-
+        Node* temp ;
+        temp = head ;
         while (temp != NULL)
         {
-            cout << temp->data << " -> ";
-            temp = temp->next;
+            cout << temp->data << " ->" ;
+            temp = temp->next ;
         }
-
-        cout << "NULL" << endl;
+        cout << "NULL" << "\n" ;
     }
 
-    void deleteAtPosition(int position)
+    void popped_at_index(int pos)
     {
         if (head == NULL)
         {
-            cout << "List is empty" << endl;
-            return;
+            cout << "Linked is empty" << "\n" ;
+            return ;
         }
 
-        if (position <= 0)
+        if (pos <= 0)
         {
-            cout << "Invalid position" << endl;
-            return;
+            cout << "Invalid position" << "\n" ;
+            return ;
         }
 
-        if (position == 1)
+        if (pos == 1)
         {
-            Node *temp = head;
-            head = head->next;
-            delete temp;
-            return;
+            pop_front();
+            return ;
         }
 
-        Node *temp = head;
+        Node* temp ;
+        temp = head ;
 
-        for (int i = 1; i < position - 1; i++)
+        for (int  i = 1; i < pos - 1 ; i++)
         {
-            if (temp == NULL)
+            if (temp == NULL || temp -> next == NULL)
             {
-                cout << "Invalid position" << endl;
-                return;
+                cout << "Position out of range" << "\n" ;
+                return ;
             }
-
-            temp = temp->next;
+            temp = temp -> next ;
         }
-
-        if (temp == NULL || temp->next == NULL)
+        
+        if (temp -> next == NULL)
         {
-            cout << "Invalid position" << endl;
-            return;
+            cout << "Position out of range" << "\n" ;
+            return ;
         }
 
-        Node *deleteNode = temp->next;
-        temp->next = deleteNode->next;
-        delete deleteNode;
+        if (temp -> next == tail )
+        {
+            pop_back() ;
+            return ;
+        }
+        
+        Node* deleteNode = temp -> next ;
+        temp -> next = deleteNode -> next ;
+        delete deleteNode ;
+        
+        
     }
+
 };
 
-int main()
-{
-    system("cls");
+int main() {
+     system("cls");
 
-    list ll;
+     list ll;
 
-    ll.push(10);
-    ll.push(20);
-    ll.push(30);
-    ll.push(40);
+     ll.push_front(4) ;
+     ll.push_front(3) ;
+     ll.push_front(2) ;
+     ll.push_front(1) ;
 
-    cout << "Original List:" << endl;
-    ll.print();
+     cout << "Original List: ";
+     ll.display();
 
-    int position = 3;
+     ll.popped_at_index(3);
 
-    cout << "Delete position: " << position << endl;
-    ll.deleteAtPosition(position);
+     cout << "After deleting position 3: ";
+     ll.display();
 
-    cout << "After deletion:" << endl;
-    ll.print();
-
-    system("pause");
-    system("cls");
-    return 0;
+     system("pause");
+     system("cls");
+     return 0;
 }
