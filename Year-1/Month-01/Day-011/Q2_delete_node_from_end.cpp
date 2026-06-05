@@ -1,66 +1,108 @@
+
+
 #include <iostream>
 using namespace std;
 
-class Node {
-public:
-    int data;
-    Node* next;
+class Node
+{
+    public:
+    int data ;
+    Node* next ;
 
-    Node(int value) {
-        data = value;
-        next = NULL;
+    Node(int data)
+    {
+        this -> data = data ;
+        this -> next = NULL ;
     }
+}; 
+
+class list
+{
+    public:
+    Node* head ;
+    Node* tail ;
+
+    list()
+    {
+        head = tail = NULL ;
+    }
+
+    void push_front(int val)
+    {
+        Node* newNode = new Node(val) ;
+
+        if (head == NULL)
+        {
+            head = tail = newNode ;
+            return ;
+        }
+        
+        else
+        {
+            newNode -> next = head ;
+            head = newNode ;
+        }
+    }
+
+    void pop_back()
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty" << "\n" ;
+            return ;
+        }
+
+        if (head == tail)
+        {
+            delete  head ;
+            head = tail = NULL ;
+            return ;
+        }
+        
+
+        Node* temp ;
+        temp = head ;
+
+        while (temp -> next != tail)
+        {
+            temp = temp -> next ;
+        }
+        delete tail ;
+        tail = temp ;
+        tail -> next = NULL ;
+    }
+
+    void display()
+    {
+        Node* temp ;
+        temp = head ;
+        while (temp != NULL)
+        {
+            cout << temp -> data << " ->" ;
+            temp = temp -> next ; 
+        }
+        cout << "NULL" << "\n" ;
+    }
+
 };
 
-void display(Node* head) {
-    Node* temp = head;
-
-    while (temp != NULL) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
-    }
-
-    cout << "NULL" << endl;
-}
-
-void deleteLast(Node*& head) {
-    if (head == NULL) {
-        cout << "List is empty. Nothing to delete." << endl;
-        return;
-    }
-
-    if (head->next == NULL) {
-        delete head;
-        head = NULL;
-        return;
-    }
-
-    Node* temp = head;
-
-    while (temp->next->next != NULL) {
-        temp = temp->next;
-    }
-
-    delete temp->next;
-    temp->next = NULL;
-}
-
 int main() {
-    system("cls");
+     system("cls");
 
-    Node* head = new Node(10);
-    head->next = new Node(20);
-    head->next->next = new Node(30);
+     list ll;
+     ll.push_front(1);
+     ll.push_front(2);
+     ll.push_front(3);
 
-    cout << "Original List:" << endl;
-    display(head);
+     cout << "Linked List: " << "\n";
+     ll.display();
 
-    deleteLast(head);
+     ll.pop_back();
 
-    cout << "After deletion:" << endl;
-    display(head);
+     cout << "Linked List After Popped: " << "\n";
+     ll.display();
 
-    system("pause");
-    system("cls");
-    return 0;
+     system("pause");
+     system("cls");
+     return 0;
 }

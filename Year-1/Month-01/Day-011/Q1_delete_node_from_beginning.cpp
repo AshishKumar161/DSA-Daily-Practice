@@ -1,55 +1,91 @@
 #include <iostream>
 using namespace std;
 
-class Node {
-public:
-    int data;
-    Node* next;
+class Node 
+{
+    public:
+    int data ;
+    Node* next ;
 
-    Node(int value) {
-        data = value;
-        next = NULL;
+    Node(int data)
+    {
+        this -> data = data ;
+        this -> next = NULL ;
     }
 };
 
-void display(Node* head) {
-    Node* temp = head;
+class list 
+{
+    public:
+    Node* head ;
+    Node* tail ;
 
-    while (temp != NULL) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
+    list()
+    {
+        head = tail = NULL ;
     }
 
-    cout << "NULL" << endl;
-}
+    void push_front(int val) 
+    {
+        Node* newNode = new Node(val) ;
 
-void deleteFirst(Node*& head) {
-    if (head == NULL) {
-        cout << "List is empty. Nothing to delete." << endl;
-        return;
+        if (head == NULL)
+        {
+            head = tail = newNode ;
+            return ;
+        }
+        
+        else
+        {
+            newNode -> next = head ;
+            head = newNode ;
+        }
     }
 
-    Node* temp = head;
-    head = head->next;
-    delete temp;
-}
+    void pop_front()
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty" << "\n" ;
+            return ; 
+        }
+        Node* temp ;
+        temp = head ;
+        head = head -> next ;
+        delete temp ;
+    }
+
+    void display()
+    {
+        Node* temp ;
+        temp = head ;
+        while (temp != NULL)
+        {
+            cout << temp -> data << " ->" ;
+            temp = temp -> next ;
+        }
+        cout << "NULL" << "\n" ;
+    }
+
+};
 
 int main() {
-    system("cls");
+     system("cls");
 
-    Node* head = new Node(10);
-    head->next = new Node(20);
-    head->next->next = new Node(30);
+     list ll ;
+     ll.push_front(1) ;
+     ll.push_front(2) ;
+     ll.push_front(3) ;
+     
+     cout << "Linked List: " << "\n" ;
+     ll.display();
 
-    cout << "Original List:" << endl;
-    display(head);
-
-    deleteFirst(head);
-
-    cout << "After deletion:" << endl;
-    display(head);
-
-    system("pause");
-    system("cls");
-    return 0;
+     ll.pop_front() ;
+     
+     cout << "Linked List After Popped: " << "\n" ;
+     ll.display();
+      
+     system("pause");
+     system("cls");
+     return 0;
 }
