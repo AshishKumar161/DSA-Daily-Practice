@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 using namespace std;
 
@@ -14,61 +16,59 @@ public:
     }
 };
 
-class List
+class list
 {
 public:
     Node *head;
+    Node *tail;
 
-    List()
+    list()
     {
-        head = NULL;
+        head = tail = NULL;
     }
 
-    void push_back(int val)
+    void push_front(int val)
     {
         Node *newNode = new Node(val);
 
         if (head == NULL)
         {
-            head = newNode;
+            head = tail = newNode ;
             return;
         }
 
-        Node *temp = head;
-
-        while (temp->next != NULL)
+        else
         {
-            temp = temp->next;
+            newNode->next = head;
+            head = newNode;
         }
-
-        temp->next = newNode;
     }
 
-    void display()
-    {
-        Node *temp = head;
-
-        while (temp != NULL)
-        {
-            cout << temp->data << " -> ";
-            temp = temp->next;
-        }
-
-        cout << "NULL" << endl;
-    }
-
-    int countNodes()
+    int count_node()
     {
         int count = 0;
-        Node *temp = head;
-
+        Node *temp;
+        temp = head;
         while (temp != NULL)
         {
             count++;
             temp = temp->next;
         }
-
         return count;
+    }
+
+    void display()
+    {
+        Node* temp ;
+        temp = head ;
+
+        while (temp != NULL)
+        {
+            cout << temp -> data << " ->" ;
+            temp = temp -> next ;
+        }
+        cout << "NULL" << "\n" ;
+        
     }
 };
 
@@ -76,17 +76,17 @@ int main()
 {
     system("cls");
 
-    List l;
+    list ll ;
+    
+    ll.push_front(1) ;
+    ll.push_front(2) ;
+    ll.push_front(3) ;
+    ll.push_front(4) ;
 
-    l.push_back(10);
-    l.push_back(20);
-    l.push_back(30);
-    l.push_back(40);
+    cout << "Linked List: " << "\n" ;
+    ll.display();
 
-    cout << "Linked List:" << endl;
-    l.display();
-
-    cout << "Total nodes = " << l.countNodes() << endl;
+    cout << "Total nodes: " << ll.count_node() << "\n" ;
 
     system("pause");
     system("cls");
