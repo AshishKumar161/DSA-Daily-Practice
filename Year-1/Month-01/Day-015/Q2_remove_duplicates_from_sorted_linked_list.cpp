@@ -80,6 +80,7 @@ public:
 
 int main()
 {
+    system("cls");
     List l;
 
     l.push_back(10);
@@ -97,5 +98,7 @@ int main()
     cout << "After removing duplicates:" << endl;
     l.display();
 
+    system("pause");
+    system("cls");
     return 0;
 }
