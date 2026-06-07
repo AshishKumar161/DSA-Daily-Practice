@@ -71,6 +71,8 @@ public:
 
 int main()
 {
+    system("cls");
+
     List l;
 
     l.push_back(10);
@@ -89,5 +91,8 @@ int main()
         cout << "No loop detected" << endl;
     }
 
+    system("pause");
+    system("cls");
     return 0;
 }
+
