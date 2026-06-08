@@ -81,6 +81,8 @@ public:
 
 int main()
 {
+    system("cls");
+
     DoublyList dl;
 
     dl.push_back(20);
@@ -94,5 +96,8 @@ int main()
     cout << "After inserting 10 at beginning:" << endl;
     dl.display();
 
+    system("pause");
+    system("cls");
     return 0;
 }
+
