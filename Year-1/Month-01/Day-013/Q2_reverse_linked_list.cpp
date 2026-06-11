@@ -107,10 +107,12 @@ int main() {
      ll.push_front(3) ;
      ll.push_front(4) ;
      
+     cout << "Linked List: " << "\n" ;
      ll.display() ;
 
      ll.reverse() ;
-
+     
+     cout <<"Reverse Linked List: " << "\n" ;
      ll.display() ;
 
      system("pause");
