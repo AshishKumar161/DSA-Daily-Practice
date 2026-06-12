@@ -4,78 +4,78 @@ using namespace std;
 class Node
 {
 public:
-    Node *prev;
-    int data;
-    Node *next;
+    Node* prev ;
+    int data ;
+    Node* next ;
 
     Node(int data)
     {
-        this->prev = NULL;
-        this->data = data;
-        this->next = NULL;
+        this -> prev = NULL ;
+        this -> data = data ;
+        this -> next = NULL ;
     }
 };
 
-class DoublyList
+class list
 {
 public:
-    Node *head;
-    Node *tail;
+    Node* head ;
+    Node* tail ;
 
-    DoublyList()
+    list()
     {
-        head = tail = NULL;
+        head = tail = NULL ;
     }
 
     void push_back(int val)
     {
-        Node *newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        tail->next = newNode;
-        newNode->prev = tail;
-        tail = newNode;
+        tail -> next = newNode ;
+        newNode -> prev = tail ;
+        tail = newNode ;
     }
 
     void insertAtBeginning(int val)
     {
-        Node *newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        newNode->next = head;
-        head->prev = newNode;
+        newNode -> next = head ;
+        head -> prev = newNode ;
         head = newNode;
     }
-
+ 
     void display()
     {
-        Node *temp = head;
+        Node* temp = head ;
 
-        cout << "NULL <- ";
+        cout << "NULL <- " ;
 
         while (temp != NULL)
         {
-            cout << temp->data;
+            cout << temp -> data ;
 
-            if (temp->next != NULL)
+            if (temp -> next != NULL)
             {
-                cout << " <-> ";
+                cout << " <-> " ;
             }
 
-            temp = temp->next;
+            temp = temp -> next ;
         }
 
-        cout << " -> NULL" << endl;
+        cout << " -> NULL" << "\n" ;
     }
 };
 
@@ -83,18 +83,18 @@ int main()
 {
     system("cls");
 
-    DoublyList dl;
+    list ll ;
 
-    dl.push_back(20);
-    dl.push_back(30);
+    ll.push_back(20) ;
+    ll.push_back(30) ;
 
-    cout << "Original List:" << endl;
-    dl.display();
+    cout << "Original List:" << "\n" ;
+    ll.display() ;
 
-    dl.insertAtBeginning(10);
+    ll.insertAtBeginning(10) ;
 
-    cout << "After inserting 10 at beginning:" << endl;
-    dl.display();
+    cout << "After inserting 10 at beginning:" << "\n" ;
+    ll.display() ;
 
     system("pause");
     system("cls");
