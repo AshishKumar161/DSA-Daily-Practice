@@ -3,107 +3,119 @@ using namespace std;
 
 class Node
 {
-public:
-    int data;
-    Node *next;
+    public:
+    int data ;
+    Node* next ;
 
     Node(int data)
     {
-        this->data = data;
-        this->next = NULL;
+        this -> data = data ;
+        this -> next = NULL ;
     }
+
 };
 
-class List
+class list 
 {
-public:
-    Node *head;
-    Node *tail;
-
-    List()
+    public:
+    Node* head ;
+    Node* tail ;
+    
+    list()
     {
-        head = tail = NULL;
+        head = tail = NULL ;
     }
 
-    void push_back(int val)
+    void push_front(int val)
     {
-        Node *newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
-
-        tail->next = newNode;
-        tail = newNode;
+        
+        else
+        {
+            newNode -> next = head  ;
+            head = newNode ;
+        }
+        
     }
 
-    void display()
+    void nth_end_node (int n)
     {
-        Node *temp = head;
 
-        while (temp != NULL)
+        if (head == NULL )
         {
-            cout << temp->data << " -> ";
-            temp = temp->next;
+            cout << "List is Empty " << "\n" ;
+            return ;
         }
+        
 
-        cout << "NULL" << endl;
-    }
+        Node* first = head ;
+        Node* second = head ;
 
-    void nth_from_end(int n)
-    {
-        if (head == NULL)
-        {
-            cout << "List is empty" << endl;
-            return;
-        }
-
-        Node *first = head;
-        Node *second = head;
-
-        // Move first pointer n steps ahead
         for (int i = 0; i < n; i++)
         {
             if (first == NULL)
             {
-                cout << "Invalid value of n" << endl;
-                return;
+                cout << "Invalid Value of N: " << "\n" ;
+                return ;
             }
-
-            first = first->next;
+            
+            first = first -> next ; 
         }
-
-        // Move both pointers until first reaches NULL
-        while (first != NULL)
+        
+        while (first != NULL )
         {
-            first = first->next;
-            second = second->next;
+            first = first -> next ;
+            second = second -> next ;
         }
-
-        cout << "Nth node from end = " << second->data << endl;
+        
+        cout << "Nth Node From End: " << second -> data << "\n" ;
+ 
     }
+
+    void display()
+    {
+        Node* temp ;
+        temp = head ;
+        while (temp != NULL)
+        {
+            cout << temp -> data << "->" ;
+            temp = temp -> next ;
+        }
+        cout << "NULL" << "\n" ;
+    }
+
 };
 
-int main()
-{
-    List l;
+int main() {
+     system("cls");
+     
+     list ll ;
 
-    l.push_back(10);
-    l.push_back(20);
-    l.push_back(30);
-    l.push_back(40);
-    l.push_back(50);
+     ll.push_front(1) ;
+     ll.push_front(2) ;
+     ll.push_front(3) ;
+     ll.push_front(4) ;
+     ll.push_front(5) ;
+     ll.push_front(6) ; 
+     ll.push_front(7) ;
+     ll.push_front(8) ; 
+     ll.push_front(9) ;
+     ll.push_front(10) ;
 
-    int n = 2;
+     cout << "Linked List: " << "\n" ;
+     ll.display() ;
 
-    cout << "Linked List:" << endl;
-    l.display();
 
-    cout << "n = " << n << endl;
+     ll.nth_end_node(5) ;
 
-    l.nth_from_end(n);
 
-    return 0;
+     system("pause");
+     system("cls");
+     return 0;
 }
