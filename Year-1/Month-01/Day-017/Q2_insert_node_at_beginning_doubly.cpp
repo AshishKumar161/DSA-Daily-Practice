@@ -4,57 +4,57 @@ using namespace std;
 class Node
 {
 public:
-    int data;
-    Node *prev;
-    Node *next;
+    int data ;
+    Node * prev ;
+    Node * next ;
 
     Node(int data)
     {
-        this->data = data;
-        this->prev = NULL;
-        this->next = NULL;
+        this -> data = data ;
+        this -> prev = NULL ;
+        this -> next = NULL ;
     }
 };
 
 class DoublyList
 {
 public:
-    Node *head;
-    Node *tail;
+    Node * head ;
+    Node * tail ;
 
     DoublyList()
     {
-        head = tail = NULL;
+        head = tail = NULL ;
     }
 
     void push_back(int val)
     {
-        Node *newNode = new Node(val);
+        Node * newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        tail->next = newNode;
-        newNode->prev = tail;
-        tail = newNode;
+        tail -> next = newNode ;
+        newNode -> prev = tail ;
+        tail = newNode ;
     }
 
     void push_front(int val)
     {
-        Node *newNode = new Node(val);
+        Node * newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        newNode->next = head;
-        head->prev = newNode;
-        head = newNode;
+        newNode -> next = head ;
+        head -> prev = newNode ;
+        head = newNode ;
     }
 
     void insert_at_position(int val, int pos)
@@ -62,65 +62,65 @@ public:
         if (pos <= 0)
         {
             cout << "Invalid position" << endl;
-            return;
+            return ; 
         }
 
         if (pos == 1)
         {
-            push_front(val);
-            return;
+            push_front(val) ;
+            return ;
         }
 
-        Node *temp = head;
+        Node * temp = head;
 
         for (int i = 1; i < pos - 1; i++)
         {
             if (temp == NULL)
             {
                 cout << "Position out of range" << endl;
-                return;
+                return ;
             }
 
-            temp = temp->next;
+            temp = temp -> next ;
         }
 
         if (temp == NULL)
         {
             cout << "Position out of range" << endl;
-            return;
+            return ;
         }
 
         if (temp == tail)
         {
-            push_back(val);
-            return;
+            push_back(val) ;
+            return ;
         }
 
-        Node *newNode = new Node(val);
+        Node *newNode = new Node(val) ;
 
-        newNode->next = temp->next;
-        newNode->prev = temp;
+        newNode -> next = temp -> next ;
+        newNode -> prev = temp ;
 
-        temp->next->prev = newNode;
-        temp->next = newNode;
+        temp -> next -> prev = newNode ;
+        temp -> next = newNode ;
     }
 
     void display()
     {
-        Node *temp = head;
+        Node * temp = head ;
 
-        cout << "NULL <- ";
+        cout << "NULL <- " ;
 
         while (temp != NULL)
         {
-            cout << temp->data;
+            cout << temp -> data ;
 
-            if (temp->next != NULL)
+            if (temp -> next != NULL)
             {
-                cout << " <-> ";
+                cout << " <-> " ;
             }
 
-            temp = temp->next;
+            temp = temp -> next ;
         }
 
         cout << " -> NULL" << endl;
@@ -131,19 +131,19 @@ int main()
 {
     system("cls");
 
-    DoublyList dl;
+    DoublyList dl ;
 
-    dl.push_back(10);
-    dl.push_back(20);
-    dl.push_back(40);
+    dl.push_back(10) ;
+    dl.push_back(20) ;
+    dl.push_back(40) ;
 
     cout << "Original List:" << endl;
-    dl.display();
+    dl.display() ;
 
-    dl.insert_at_position(30, 3);
+    dl.insert_at_position(30, 3) ;
 
     cout << "After inserting 30 at position 3:" << endl;
-    dl.display();
+    dl.display() ;
 
     system("pause");
     system("cls");
