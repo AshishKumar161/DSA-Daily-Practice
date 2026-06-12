@@ -1,102 +1,111 @@
+
+
 #include <iostream>
 using namespace std;
 
-class Node
+class Node 
 {
-public:
-    Node *prev;
-    int data;
-    Node *next;
+    public:
+    int data ;
+    Node* next ;
+    Node* prev ;
 
-    Node(int data)
+    Node(int data )
     {
-        this->prev = NULL;
-        this->data = data;
-        this->next = NULL;
+        this -> data = data ;
+        this -> next = NULL ;
+        this -> prev = NULL ;
     }
 };
 
-class DoublyList
+class list 
 {
-public:
-    Node *head;
-    Node *tail;
-
-    DoublyList()
+    public:
+    Node* head ;
+    Node* tail ;
+    
+    list()
     {
-        head = tail = NULL;
-    }
-
-    void push_back(int val)
-    {
-        Node *newNode = new Node(val);
-
-        if (head == NULL)
-        {
-            head = tail = newNode;
-            return;
-        }
-
-        tail->next = newNode;
-        newNode->prev = tail;
-        tail = newNode;
+        head = tail = NULL ;
     }
 
     void push_front(int val)
     {
-        Node *newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        newNode->next = head;
-        head->prev = newNode;
-        head = newNode;
+        else
+        {
+            newNode -> next = head ;
+            head -> prev = newNode ;
+            head = newNode ;
+        }
+    }
+
+    void push_back(int val)
+    {
+        Node* newNode = new Node(val) ;
+
+       if (head == NULL)
+       {
+            head = tail =  newNode ;
+            return ;
+       }
+
+       else
+       {
+            tail -> next = newNode ;
+            newNode -> prev = tail ;
+            tail = newNode ;
+       }
     }
 
     void display()
     {
-        Node *temp = head;
+        Node* temp ;
+        temp = head ;
 
-        cout << "NULL <- ";
+        cout << "NULL" << " <- " ;
 
         while (temp != NULL)
         {
-            cout << temp->data;
+            cout << temp -> data ;
 
-            if (temp->next != NULL)
+            if (temp -> next != NULL)
             {
-                cout << " <-> ";
+                cout << " <-> " ;
             }
-
-            temp = temp->next;
+            
+            temp = temp -> next ;
         }
-
-        cout << " -> NULL" << endl;
+        cout << " -> " << "NULL" << "\n" ;
     }
+
 };
 
-int main()
-{
-    system("cls");
-    DoublyList dl;
+int main() {
+     system("cls");
+     
+    list ll;
 
-    dl.push_back(10);
-    dl.push_back(20);
-    dl.push_back(30);
+    ll.push_back(10);
+    ll.push_back(20);
+    ll.push_back(30);
 
     cout << "Doubly Linked List:" << endl;
-    dl.display();
+    ll.display();
 
-    dl.push_front(5);
+    ll.push_front(5);
 
     cout << "After inserting node at beginning:" << endl;
-    dl.display();
-
-    system("pause");
-    system("cls");
-    return 0;
+    ll.display();
+      
+     system("pause");
+     system("cls");
+     return 0;
 }
