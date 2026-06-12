@@ -3,7 +3,7 @@ using namespace std;
 
 class Node
 {
-public:
+    public:
     Node* prev ;
     int data ;
     Node* next ;
@@ -18,7 +18,7 @@ public:
 
 class list
 {
-public:
+    public:
     Node* head ;
     Node* tail ;
 

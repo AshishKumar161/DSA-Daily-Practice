@@ -3,64 +3,64 @@ using namespace std;
 
 class Node
 {
-public:
-    int data;
-    Node* prev;
-    Node* next;
+    public:
+    int data ;
+    Node* prev ;
+    Node* next ;
 
     Node(int data)
     {
-        this->data = data;
-        this->prev = NULL;
-        this->next = NULL;
+        this -> data = data ;
+        this -> prev = NULL ;
+        this -> next = NULL ;
     }
 };
 
-class DoublyList
+class list
 {
-public:
-    Node* head;
-    Node* tail;
+    public:
+    Node* head ;
+    Node* tail ;
 
-    DoublyList()
+    list()
     {
-        head = tail = NULL;
+        head = tail = NULL ;
     }
 
     void push_back(int val)
     {
-        Node* newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        tail->next = newNode;
-        newNode->prev = tail;
-        tail = newNode;
+        tail -> next = newNode ;
+        newNode -> prev = tail ;
+        tail = newNode ;
     }
 
     void display()
     {
-        Node* temp = head;
-
-        cout << "NULL <- ";
+        Node* temp = head ;
+ 
+        cout << "NULL <- " ;
 
         while (temp != NULL)
         {
-            cout << temp->data;
+            cout << temp -> data ;
 
-            if (temp->next != NULL)
+            if (temp -> next != NULL)
             {
-                cout << " <-> ";
+                cout << " <-> " ;
             }
 
-            temp = temp->next;
+            temp = temp -> next ;
         }
 
-        cout << " -> NULL" << endl;
+        cout << " -> NULL" << "\n" ;
     }
 };
 
@@ -68,18 +68,18 @@ int main()
 {
     system("cls");
 
-    DoublyList dl;
+    list ll ;
 
-    dl.push_back(10);
-    dl.push_back(20);
+    ll.push_back(10) ;
+    ll.push_back(20) ;
 
-    cout << "Original List:" << endl;
-    dl.display();
+    cout << "Original List:" << "\n" ;
+    ll.display() ;
 
-    dl.push_back(30);
+    ll.push_back(30) ;
 
-    cout << "After inserting 30 at end:" << endl;
-    dl.display();
+    cout << "After inserting 30 at end:" << "\n" ;
+    ll.display() ;
 
     system("pause");
     system("cls");
