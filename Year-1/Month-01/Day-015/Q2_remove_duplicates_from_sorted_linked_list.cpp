@@ -1,104 +1,117 @@
+
+
 #include <iostream>
 using namespace std;
 
-class Node
+class Node 
 {
-public:
-    int data;
-    Node *next;
+    public:
+    int data ;
+    Node* next ;
 
     Node(int data)
     {
-        this->data = data;
-        this->next = NULL;
+        this -> data = data ;
+        this -> next = NULL ;
     }
+
 };
 
-class List
+class list 
 {
-public:
-    Node *head;
-    Node *tail;
+    public:
+    Node* head ;
+    Node* tail ;
 
-    List()
+    list()
     {
-        head = tail = NULL;
+        head = tail = NULL ;
     }
 
-    void push_back(int val)
+    void push_front(int val)
     {
-        Node *newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
-        if (head == NULL)
+        if (head == NULL )
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        tail->next = newNode;
-        tail = newNode;
+        else
+        {
+            newNode -> next = head ;
+            head = newNode ;
+        }
+        
     }
 
-    void removeDuplicates()
+    void dublicates()
     {
-        Node *current = head;
+        Node* curr = head ;
 
-        while (current != NULL && current->next != NULL)
+        while (curr != NULL && curr -> next != NULL)
         {
-            if (current->data == current->next->data)
+            if (curr -> data == curr -> next -> data)
             {
-                Node *duplicate = current->next;
-                current->next = current->next->next;
+                Node* dublicate = curr -> next ;
+                curr -> next = curr -> next -> next ;
 
-                if (duplicate == tail)
+                if (dublicate == tail)
                 {
-                    tail = current;
+                    tail = curr ;
                 }
-
-                delete duplicate;
+                delete dublicate ;
             }
             else
             {
-                current = current->next;
+                curr = curr -> next ;
             }
+            
         }
+        
     }
 
     void display()
     {
-        Node *temp = head;
+        Node* temp ;
+        temp = head ;
 
         while (temp != NULL)
         {
-            cout << temp->data << " -> ";
-            temp = temp->next;
+            cout << temp -> data << "->" ;
+            temp = temp -> next ;
         }
-
-        cout << "NULL" << endl;
+        cout << "NULL" << "\n" ;
     }
+
 };
 
-int main()
-{
-    system("cls");
-    List l;
+int main() {
+     system("cls");
+     
+     list ll ;
 
-    l.push_back(10);
-    l.push_back(20);
-    l.push_back(20);
-    l.push_back(30);
-    l.push_back(30);
-    l.push_back(40);
+     ll.push_front(1) ;
+     ll.push_front(2) ;
+     ll.push_front(3) ;
+     ll.push_front(4) ;
+     ll.push_front(5) ;
+     ll.push_front(5) ;
+     ll.push_front(6) ;
+     ll.push_front(7) ;
+     ll.push_front(8) ;
+     ll.push_front(9) ;
 
-    cout << "Original List:" << endl;
-    l.display();
+     cout << "Linked List:" << "\n";
+     ll.display();
 
-    l.removeDuplicates();
+     
+     ll.dublicates();
 
-    cout << "After removing duplicates:" << endl;
-    l.display();
+     ll.display();
 
-    system("pause");
-    system("cls");
-    return 0;
+     system("pause");
+     system("cls");
+     return 0;
 }
