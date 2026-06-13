@@ -4,87 +4,88 @@ using namespace std;
 class Node
 {
 public:
-    int data;
-    Node *prev;
-    Node *next;
+    int data ;
+    Node* prev ;
+    Node* next ;
 
     Node(int data)
     {
-        this->data = data;
-        this->prev = NULL;
-        this->next = NULL;
+        this -> data = data ;
+        this -> prev = NULL ;
+        this -> next = NULL ;
     }
 };
 
-class DoublyList
+class list
 {
 public:
-    Node *head;
-    Node *tail;
+    Node* head ;
+    Node* tail ;
 
-    DoublyList()
+    list()
     {
-        head = tail = NULL;
+        head = tail = NULL ;
     }
 
     void push_back(int val)
     {
-        Node *newNode = new Node(val);
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
-            head = tail = newNode;
-            return;
+            head = tail = newNode ;
+            return ;
         }
 
-        tail->next = newNode;
-        newNode->prev = tail;
-        tail = newNode;
+        tail -> next = newNode ; 
+        newNode -> prev = tail ;
+        tail = newNode ;
     }
 
     void pop_front()
     {
         if (head == NULL)
         {
-            cout << "List is empty" << endl;
-            return;
+            cout << "List is empty" << "\n" ;
+            return ;
         }
 
-        Node *temp = head;
+        Node* temp = head ;
 
-        // if only one node is present
+        
         if (head == tail)
         {
-            head = tail = NULL;
-        }
-        else
-        {
-            head = head->next;
-            head->prev = NULL;
+            head = tail = NULL ;
         }
 
-        delete temp;
+        else
+        {
+            head = head -> next ;
+            head -> prev = NULL ;
+        }
+
+        delete temp ;
     }
 
     void display()
     {
-        Node *temp = head;
+        Node* temp = head ;
 
-        cout << "NULL <- ";
+        cout << "NULL <- " ;
 
         while (temp != NULL)
         {
-            cout << temp->data;
+            cout << temp -> data ;
 
             if (temp->next != NULL)
             {
-                cout << " <-> ";
+                cout << " <-> " ;
             }
 
-            temp = temp->next;
+            temp = temp -> next ;
         }
 
-        cout << " -> NULL" << endl;
+        cout << " -> NULL" << "\n" ;
     }
 };
 
@@ -92,38 +93,21 @@ int main()
 {
     system("cls");
 
-    DoublyList dl;
+    list ll ;
 
-    dl.push_back(10);
-    dl.push_back(20);
-    dl.push_back(30);
+    ll.push_back(10) ; 
+    ll.push_back(20) ;
+    ll.push_back(30) ;
 
-    cout << "Original List:" << endl;
-    dl.display();
+    cout << "Original List:" << "\n" ;
+    ll.display() ;
 
-    dl.pop_front();
+    ll.pop_front() ;
 
-    cout << "After deleting first node:" << endl;
-    dl.display();
+    cout << "After deleting first node:" << "\n" ;
+    ll.display() ;
 
     system("pause");
     system("cls");
     return 0;
-}
-
-
-
-
-
-
-
-#include <iostream>
-
-int main() {
-     system("cls");
-     
-      
-     system("pause");
-     system("cls");
-     return 0;
 }
