@@ -110,3 +110,20 @@ int main()
     system("cls");
     return 0;
 }
+
+
+
+
+
+
+
+#include <iostream>
+
+int main() {
+     system("cls");
+     
+      
+     system("pause");
+     system("cls");
+     return 0;
+}
