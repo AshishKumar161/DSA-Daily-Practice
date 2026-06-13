@@ -1,93 +1,102 @@
 #include <iostream>
 using namespace std;
 
-class Node
+class Node 
 {
-public:
+    public:
     int data ;
-    Node * prev ;
-    Node * next ;
+    Node* next ;
+    Node* prev ;
 
     Node(int data)
     {
         this -> data = data ;
-        this -> prev = NULL ;
         this -> next = NULL ;
+        this -> prev = NULL ;
     }
+    
 };
 
-class DoublyList
+class list 
 {
-public:
-    Node * head ;
-    Node * tail ;
-
-    DoublyList()
+    public:
+    Node* head ;
+    Node* tail ;
+    
+    list()
     {
         head = tail = NULL ;
     }
 
     void push_back(int val)
     {
-        Node * newNode = new Node(val) ;
-
+        Node* newNode = new Node(val) ;
         if (head == NULL)
         {
             head = tail = newNode ;
             return ;
         }
-
-        tail -> next = newNode ;
-        newNode -> prev = tail ;
-        tail = newNode ;
+        else
+        {
+            tail -> next = newNode ;
+            newNode -> prev = tail ;
+            tail = newNode ;
+        }
     }
+
 
     void push_front(int val)
     {
-        Node * newNode = new Node(val) ;
+        Node* newNode = new Node(val) ;
 
         if (head == NULL)
         {
             head = tail = newNode ;
             return ;
         }
-
-        newNode -> next = head ;
-        head -> prev = newNode ;
-        head = newNode ;
+        
+        else
+        {
+            newNode -> next = head ;
+            head -> prev = newNode ; 
+            head = newNode ;
+        }
     }
 
-    void insert_at_position(int val, int pos)
+    void insert_at_position(int val , int pos)
     {
         if (pos <= 0)
         {
-            cout << "Invalid position" << endl;
-            return ; 
+            cout << "Invalid Position" << "\n" ;
+            return ;
         }
-
+        
         if (pos == 1)
         {
             push_front(val) ;
             return ;
         }
+        
+        Node* temp ;
+        temp = head ;
 
-        Node * temp = head;
-
-        for (int i = 1; i < pos - 1; i++)
+        for (int  i = 0; i < pos -1 ; i++)
         {
-            if (temp == NULL)
+            if (temp == NULL )
             {
-                cout << "Position out of range" << endl;
+
+                cout << "Position out of range" << "\n" ;
                 return ;
             }
 
-            temp = temp -> next ;
-        }
+            temp = temp-> next ;
+         }
 
-        if (temp == NULL)
+         if (temp == NULL )
         {
-            cout << "Position out of range" << endl;
-            return ;
+
+             cout << "Position out of range" << "\n" ;
+             return ;
         }
 
         if (temp == tail)
@@ -95,19 +104,23 @@ public:
             push_back(val) ;
             return ;
         }
+        
+        else
+        {
+            Node* newNode = new Node(val) ;
 
-        Node *newNode = new Node(val) ;
+            newNode -> next = temp -> next ;
+            newNode -> prev = temp ;
 
-        newNode -> next = temp -> next ;
-        newNode -> prev = temp ;
-
-        temp -> next -> prev = newNode ;
-        temp -> next = newNode ;
+            temp -> next -> prev = newNode ;
+            temp -> next = newNode ;
+            
+        }    
     }
 
     void display()
     {
-        Node * temp = head ;
+        Node* temp = head ;
 
         cout << "NULL <- " ;
 
@@ -123,29 +136,28 @@ public:
             temp = temp -> next ;
         }
 
-        cout << " -> NULL" << endl;
+        cout << " -> NULL" << "\n" ;
     }
 };
 
-int main()
-{
-    system("cls");
+int main() {
+     system("cls");
 
-    DoublyList dl ;
+     list ll ;
 
-    dl.push_back(10) ;
-    dl.push_back(20) ;
-    dl.push_back(40) ;
+     ll.push_back(10) ;
+     ll.push_back(20) ;
+     ll.push_back(40) ;
 
-    cout << "Original List:" << endl;
-    dl.display() ;
+     cout << "Original List:" << "\n" ;
+     ll.display() ;
 
-    dl.insert_at_position(30, 3) ;
+     ll.insert_at_position(30, 3) ;
 
-    cout << "After inserting 30 at position 3:" << endl;
-    dl.display() ;
+     cout << "After inserting 30 at position 3:" << "\n" ;
+     ll.display() ;
 
-    system("pause");
-    system("cls");
-    return 0;
+     system("pause");
+     system("cls");
+     return 0;
 }
