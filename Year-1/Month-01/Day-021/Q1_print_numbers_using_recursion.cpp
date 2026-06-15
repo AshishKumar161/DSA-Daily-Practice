@@ -8,9 +8,11 @@ void recursion(int i , int n)
         return ;
     }
     
-    cout << i << " " ;
-    recursion(i + 1 , n) ;
-    
+    else
+    {
+        cout << i << " " ;
+        recursion(i + 1 , n) ;
+    }
 }
 
 int main() {
