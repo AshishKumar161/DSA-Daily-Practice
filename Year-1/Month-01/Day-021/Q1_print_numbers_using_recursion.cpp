@@ -23,6 +23,18 @@ int main() {
      cin  >> n ;
 
      recursion(1 , n) ;
+    
+      
+     system("pause");
+     system("cls");
+     return 0;
+}
+
+
+#include <iostream>
+
+int main() {
+     system("cls");
      
       
      system("pause");
